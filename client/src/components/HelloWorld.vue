@@ -1,57 +1,121 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+  <div class="login">
+
+    <div class="container">
+      <div class="row">
+        <div id="oii" class="col s5 left">
+          <div class="col s12">
+            <label class="active left" for="full_name">Full Name</label>
+            <input type="text" class="validate">
+
+          </div>
+          <div class="col s12">
+            <label class="active left" for="email">Email</label>
+            <input type="email" class="validate">
+
+          </div>
+          <div class="col s12">
+            <label class="active left" for="password">Password</label>
+            <input type="password" class="validate">
+
+          </div>
+
+          <div class="col s5 left">
+            <button class="btn waves-effect waves-light" type="submit" name="action">Signup
+              <i class="material-icons right">send</i>
+            </button>
+
+          </div>
+        </div>
+
+        <div id="oiii" class="col s2">
+          <div class="vl">
+            <span class="vl-innertext">or</span>
+          </div>
+        </div>
+
+        <div id="oit" class="col s5 right">
+          <div class="col s12">
+            <label class="active left" for="email">Email</label>
+            <input type="email" class="validate">
+
+          </div>
+          <div class="col s12">
+            <label class="active left" for="password">Password</label>
+            <input type="password" class="validate">
+
+          </div>
+
+          <div class="col s5 left">
+            <button class="btn waves-effect waves-light" type="submit" name="action">Login
+              <i class="material-icons right">send</i>
+            </button>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
   </div>
 </template>
 
 <script>
-export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  }
-}
+export default {}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-h3 {
-  margin: 40px 0 0;
+.container {
+  // border: 2px solid black;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
+
+#oii {
+  // border: 2px solid black;
+  margin-top: 60px;
+  background-color: rgb(204, 221, 235);
+  border-radius: 8px;
+  padding: 50px;
+  -webkit-box-shadow: 10px 10px 5px -7px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 5px -7px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 5px -7px rgba(0, 0, 0, 0.75);
 }
-li {
-  display: inline-block;
-  margin: 0 10px;
+
+#oit {
+  // border: 2px solid black;
+  margin-top: 100px;
+  background-color: rgb(204, 221, 235);
+  border-radius: 8px;
+  padding: 50px;
+  -webkit-box-shadow: 10px 10px 5px -7px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 5px -7px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 5px -7px rgba(0, 0, 0, 0.75);
 }
-a {
-  color: #42b983;
+
+#oiii {
+  // border: 2px solid black;
+  margin-top: 60px;
+
+  padding: 50px;
+
+}
+
+.vl {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  border: 2px solid #ddd;
+  height: 240px;
+}
+
+/* text inside the vertical line */
+.vl-innertext {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  padding: 8px 10px;
 }
 </style>
