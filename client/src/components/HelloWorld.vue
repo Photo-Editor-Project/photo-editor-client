@@ -73,7 +73,7 @@ export default {}
 #oii {
   // border: 2px solid black;
   margin-top: 60px;
-  background-color: rgb(177, 209, 236);
+  background-color: rgb(204, 221, 235);
   border-radius: 8px;
   padding: 50px;
   -webkit-box-shadow: 10px 10px 5px -7px rgba(0, 0, 0, 0.75);
@@ -84,7 +84,7 @@ export default {}
 #oit {
   // border: 2px solid black;
   margin-top: 100px;
-  background-color: rgb(177, 209, 236);
+  background-color: rgb(204, 221, 235);
   border-radius: 8px;
   padding: 50px;
   -webkit-box-shadow: 10px 10px 5px -7px rgba(0, 0, 0, 0.75);

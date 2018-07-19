@@ -1,5 +1,17 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div class="home">
+    <Homepage/>
   </div>
 </template>
+
+<script>
+// @ is an alias to /src
+import Homepage from '@/components/Homepage.vue'
+
+export default {
+  name: 'homepage',
+  components: {
+    Homepage
+  }
+}
+</script>
