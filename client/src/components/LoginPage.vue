@@ -5,11 +5,6 @@
       <div class="row">
         <div id="oii" class="col s5 left">
           <div class="col s12">
-            <label class="active left" for="full_name">Full Name</label>
-            <input v-model="name" type="text" class="validate">
-
-          </div>
-          <div class="col s12">
             <label class="active left" for="email">Email</label>
             <input v-model="email" type="email" class="validate">
 
@@ -21,38 +16,13 @@
           </div>
 
           <div class="col s5 left">
-            <button @click="signup" class="btn waves-effect waves-light" type="submit" name="action">Signup
-              <i class="material-icons right">send</i>
-            </button>
-
-          </div>
-        </div>
-
-        <div id="oiii" class="col s2">
-          <div class="vl">
-            <span class="vl-innertext">or</span>
-          </div>
-        </div>
-
-        <div id="oit" class="col s5 right">
-          <div class="col s12">
-            <label class="active left" for="email">Email</label>
-            <input v-model="emaillogin" type="email" class="validate">
-
-          </div>
-          <div class="col s12">
-            <label class="active left" for="password">Password</label>
-            <input v-model="passwordlogin" type="password" class="validate">
-
-          </div>
-
-          <div class="col s5 left">
             <button @click="signin" class="btn waves-effect waves-light" type="submit" name="action">Login
               <i class="material-icons right">send</i>
             </button>
 
           </div>
         </div>
+
       </div>
 
     </div>
@@ -64,32 +34,18 @@
 import axios from 'axios'
 export default {
   data: {
-    name: '',
+    
     email: '',
-    password: '',
-    emaillogin:'',
-    passwordlogin:''
+    password: ''
   },
   methods: {
-    signup() {
+    signin() {
       let obj = {
-        name: this.name,
         email: this.email,
         password: this.password
       }
-      axios.post('http://localhost:3000/users/signup', obj).then(response => {
-        console.log(response)
-        this.$router.push('/login')
-      })
-    },
-    signin() {
-      let obj = {
-        email: this.emaillogin,
-        password: this.passwordlogin
-      }
       axios.post('http://localhost:3000/users/signin', obj).then(response => {
         console.log(response)
-        localStorage.setItem('token',response.data.result)
         this.$router.push('/home')
       })
     }
@@ -99,9 +55,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-//.container {
+.container {
   // border: 2px solid black;
-//}
+}
 
 #oii {
   // border: 2px solid black;
