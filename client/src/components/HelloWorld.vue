@@ -63,12 +63,14 @@
 <script>
 import axios from 'axios'
 export default {
-  data: {
-    name: '',
-    email: '',
-    password: '',
-    emaillogin:'',
-    passwordlogin:''
+  data() {
+    return{
+      name: '',
+      email: '',
+      password: '',
+      emaillogin:'',
+      passwordlogin:''
+    }
   },
   methods: {
     signup() {

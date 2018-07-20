@@ -84,15 +84,16 @@ window.onclick = function(event) {
 }
 
 export default {
-  data: {
+  data() {
+    return {
     result:'',
     img: '',
+    }
   },
   created() {
     this.getImage()
     if (localStorage.hasOwnProperty('token')) {
       this.$router.push('/home')
-      
     } else {
       this.$router.push('/')
     }
