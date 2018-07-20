@@ -22,7 +22,7 @@
               <img class="activator" v-bind:src="image.url">
             </div>
             <div class="card-action">
-              <a id="yak" href="#">Share</a>
+              
               <a id="yak" v-on:click="goToRibbet(image.url)" href="#">Edit</a>
             </div>
 
@@ -84,17 +84,27 @@ window.onclick = function(event) {
 }
 
 export default {
-  data: {
+  data() {
+    return {
     result:'',
     img: '',
+    }
+  },
+  beforeCreate(){
+    this.$router.push('/login')
   },
   created() {
     this.getImage()
+
+    
     if (localStorage.hasOwnProperty('token')) {
       this.$router.push('/home')
       
     } else {
       this.$router.push('/')
+      
+
+
     }
   },
   methods: {
@@ -126,6 +136,7 @@ export default {
       this.img = e.target.files[0]
     },
     upload() {
+      const self = this
       let formData = new FormData()
       formData.append('image', this.img)
       // console.log(typeof formData);
@@ -140,11 +151,14 @@ export default {
         .then(response => {
           console.log(response)
 
+         
+
           swal({
             text: 'Upload Success',
             icon: 'success'
           })
-          this.$router.push('/home')
+           self.$router.push('/home')
+           this.getImage()
         })
         .catch(err => {
           if (err.response) {
@@ -176,6 +190,7 @@ export default {
 img {
   height: 200px;
   object-fit: cover;
+  padding: 10px;
 }
 
 body {
