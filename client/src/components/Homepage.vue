@@ -16,55 +16,18 @@
     <div class="container">
       <div class="row">
 
-        <div class="col s3">
-          <div class="card ">
+        <div v-for= "( image, index) in result" :key="index" class="col s3">
+          <div  class="card ">
             <div class="card-image waves-effect waves-block waves-light">
-              <img class="activator" src="https://images.pexels.com/photos/21787/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350">
+              <img class="activator" v-bind:src="image.url">
             </div>
             <div class="card-action">
               <a id="yak" href="#">Share</a>
-              <a id="yak" href="#">Edit</a>
+              <a id="yak" v-on:click="goToRibbet(image.url)" href="#">Edit</a>
             </div>
 
           </div>
         </div>
-
-        <div class="col s3">
-          <div class="card ">
-            <div class="card-image waves-effect waves-block waves-light">
-              <img class="activator" src="https://images4.alphacoders.com/171/thumb-1920-171916.jpg">
-            </div>
-            <div class="card-action">
-              <a id="yak" href="#">Share</a>
-              <a id="yak" href="#">Edit</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col s3">
-          <div class="card ">
-            <div class="card-image waves-effect waves-block waves-light">
-              <img class="activator" src="http://kb4images.com/images/hd-wallpapers/36392464-hd-wallpapers.jpg">
-            </div>
-            <div class="card-action">
-              <a id="yak" href="#">Share</a>
-              <a id="yak" href="#">Edit</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col s3">
-          <div class="card ">
-            <div class="card-image waves-effect waves-block waves-light">
-              <img class="activator" src="https://wallpaper-house.com/data/out/7/wallpaper2you_140197.jpg">
-            </div>
-            <div class="card-action">
-              <a id="yak" href="#">Share</a>
-              <a id="yak" href="#">Edit</a>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
 
@@ -122,16 +85,39 @@ window.onclick = function(event) {
 
 export default {
   data: {
-    img: ''
+    result:'',
+    img: '',
   },
   created() {
+    this.getImage()
     if (localStorage.hasOwnProperty('token')) {
       this.$router.push('/home')
+      
     } else {
       this.$router.push('/')
     }
   },
   methods: {
+    goToRibbet(value){
+      console.log("==========",value)
+      var uri_enc = encodeURIComponent(value);
+      console.log(uri_enc)
+       window.location.href=`https://www.ribbet.com/app/?_import=${uri_enc}&_export=http%3A%2F%2Flocalhost:8080%2Fedit&_exclude=out,home&_export_title=Simpan+Gambar&_export_agent=browser&embed=true`
+      
+    },
+    getImage(){
+      axios
+      .get('http://localhost:3000/images',{
+        headers:{
+          token:localStorage.getItem("token")
+        }
+      })
+      .then(response => {
+        console.log(response)
+        this.result = response.data.data
+        console.log(this.result)
+      })
+    },
     logout() {
       localStorage.clear('token')
       this.$router.push('/')
@@ -158,6 +144,7 @@ export default {
             text: 'Upload Success',
             icon: 'success'
           })
+          this.$router.push('/home')
         })
         .catch(err => {
           if (err.response) {
