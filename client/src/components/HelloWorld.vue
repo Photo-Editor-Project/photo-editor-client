@@ -81,7 +81,15 @@ export default {
       }
       axios.post('http://localhost:3000/users/signup', obj).then(response => {
         console.log(response)
-        this.$router.push('/login')
+        this.$router.push('/')
+                  swal({
+            text: 'Signup Success',
+            icon: 'success'
+          })
+
+          this.name = ''
+          this.email = ''
+          this.password = ''
       })
     },
     signin() {
