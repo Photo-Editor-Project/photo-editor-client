@@ -64,12 +64,12 @@
 import axios from 'axios'
 export default {
   data() {
-    return{
+    return {
       name: '',
       email: '',
       password: '',
-      emaillogin:'',
-      passwordlogin:''
+      emaillogin: '',
+      passwordlogin: ''
     }
   },
   methods: {
@@ -82,14 +82,14 @@ export default {
       axios.post('http://localhost:3000/users/signup', obj).then(response => {
         console.log(response)
         this.$router.push('/')
-                  swal({
-            text: 'Signup Success',
-            icon: 'success'
-          })
+        swal({
+          text: 'Signup Success',
+          icon: 'success'
+        })
 
-          this.name = ''
-          this.email = ''
-          this.password = ''
+        this.name = ''
+        this.email = ''
+        this.password = ''
       })
     },
     signin() {
@@ -99,8 +99,12 @@ export default {
       }
       axios.post('http://localhost:3000/users/signin', obj).then(response => {
         console.log(response)
-        localStorage.setItem('token',response.data.result)
+        localStorage.setItem('token', response.data.result)
         this.$router.push('/home')
+        swal({
+          text: 'Signin Success',
+          icon: 'success'
+        })
       })
     }
   }
@@ -110,7 +114,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 //.container {
-  // border: 2px solid black;
+// border: 2px solid black;
 //}
 
 #oii {

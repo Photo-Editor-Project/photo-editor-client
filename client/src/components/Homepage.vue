@@ -16,13 +16,13 @@
     <div class="container">
       <div class="row">
 
-        <div v-for= "( image, index) in result" :key="index" class="col s3">
-          <div  class="card ">
+        <div v-for="( image, index) in result" :key="index" class="col s3">
+          <div class="card ">
             <div class="card-image waves-effect waves-block waves-light">
               <img class="activator" v-bind:src="image.url">
             </div>
             <div class="card-action">
-              
+
               <a id="yak" v-on:click="goToRibbet(image.url)" href="#">Edit</a>
             </div>
 
@@ -86,50 +86,48 @@ window.onclick = function(event) {
 export default {
   data() {
     return {
-    result:'',
-    img: '',
+      result: '',
+      img: ''
     }
   },
-  beforeCreate(){
+  beforeCreate() {
     this.$router.push('/login')
   },
   created() {
     this.getImage()
 
-    
     if (localStorage.hasOwnProperty('token')) {
       this.$router.push('/home')
-      
     } else {
       this.$router.push('/')
-      
-
-
     }
   },
   methods: {
-    goToRibbet(value){
-      console.log("==========",value)
-      var uri_enc = encodeURIComponent(value);
+    goToRibbet(value) {
+      console.log('==========', value)
+      var uri_enc = encodeURIComponent(value)
       console.log(uri_enc)
-       window.location.href=`https://www.ribbet.com/app/?_import=${uri_enc}&_export=http%3A%2F%2Flocalhost:8080%2Fedit&_exclude=out,home&_export_title=Simpan+Gambar&_export_agent=browser&embed=true`
-      
+      window.location.href = `https://www.ribbet.com/app/?_import=${uri_enc}&_export=http%3A%2F%2Flocalhost:8080%2Fedit&_exclude=out,home&_export_title=Simpan+Gambar&_export_agent=browser&embed=true`
     },
-    getImage(){
+    getImage() {
       axios
-      .get('http://localhost:3000/images',{
-        headers:{
-          token:localStorage.getItem("token")
-        }
-      })
-      .then(response => {
-        console.log(response)
-        this.result = response.data.data
-        console.log(this.result)
-      })
+        .get('http://localhost:3000/images', {
+          headers: {
+            token: localStorage.getItem('token')
+          }
+        })
+        .then(response => {
+          console.log(response)
+          this.result = response.data.data
+          console.log(this.result)
+        })
     },
     logout() {
       localStorage.clear('token')
+      swal({
+        text: 'Logout Success',
+        icon: 'success'
+      })
       this.$router.push('/')
     },
     fetchImg(e) {
@@ -151,14 +149,13 @@ export default {
         .then(response => {
           console.log(response)
 
-         
-
           swal({
             text: 'Upload Success',
             icon: 'success'
           })
-           self.$router.push('/home')
-           this.getImage()
+          self.$router.push('/home')
+          this.getImage()
+          this.img = ''
         })
         .catch(err => {
           if (err.response) {
